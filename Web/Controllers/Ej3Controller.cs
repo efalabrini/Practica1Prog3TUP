@@ -12,9 +12,9 @@ namespace Web.Controllers
     {
         //metodo
         [HttpGet()]
-        public string Get([FromQuery] string nombre, [FromQuery] string anios)
+        public string Get([FromQuery] string nombre, [FromQuery] string annios)
         {
-            string result = $"Te llamas {nombre} y tienes {anios} años";
+            string result = $"Te llamas {nombre} y tienes {annios} años";
             return result;
         }
     }
