@@ -10,9 +10,9 @@ namespace Web.Controllers
     public class Ej3Controller : ControllerBase
     {
         [HttpGet()]
-        public string Get([FromQuery] string nombre, [FromQuery] string anios)
+        public string Get([FromQuery] string name, [FromQuery] string years)
         {
-            string result = $"Te llamas {nombre} y tienes {anios} años";
+            string result = $"Te llamas {name} y tienes {years} años";
             return result;
         }
     }
