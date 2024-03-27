@@ -8,11 +8,11 @@ namespace Web.Controllers
     public class Ej1Controller : ControllerBase
     {
         [HttpGet()]
-        public int Get([FromQuery] int var1, [FromQuery] int var2, [FromQuery] int var3)
+        public string Get([FromQuery] string nombre, [FromQuery] string pais)
         {
+            string fusion = $"Su nombre es {nombre} y es de {pais}";
             
-            int result = var1 + var2 + var3;
-            return result;
+            return fusion ;
         }
     }
 }
