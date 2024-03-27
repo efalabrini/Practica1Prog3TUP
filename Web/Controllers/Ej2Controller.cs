@@ -15,3 +15,7 @@ namespace Web.Controllers
         }
     }
 }
+
+//2) Pedir por parámetro un nombre de persona y el nombre de una ciudad
+//(no hace falta que sean reales o comprobarlos) y mostrar por consola el
+//siguiente mensaje Hola  <nombre>  bienvenido a  <ciudad>. Utilizar Interpolación.
