@@ -8,7 +8,7 @@ namespace Web.Controllers
     public class Ej3Controller : ControllerBase
     {
         [HttpGet()]
-        public string Get([FromQuery] string nombre, [FromQuery] string edad [FromQuery])
+        public string Get([FromQuery] string nombre, [FromQuery] string edad)
         {
 
             string mensaje = $"Te llamas {nombre} y tenés {edad}";
