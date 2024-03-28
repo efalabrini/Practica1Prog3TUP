@@ -10,7 +10,7 @@ namespace Web.Controllers
     public class Ej9Controller : ControllerBase
     {
         [HttpGet()]
-        public Array Get()
+        public string Get()
         {
             List<int> pairNumbers = new();
 
@@ -23,7 +23,7 @@ namespace Web.Controllers
             }
 
 
-            return pairNumbers.ToArray(); // no me dejaba retornar una lista asiq transformo la lista en array y la retorno
+            return $"{string.Join(", ", pairNumbers)}";
         }
     }
 }
