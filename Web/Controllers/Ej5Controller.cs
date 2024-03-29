@@ -27,7 +27,7 @@ namespace Web.Controllers
             }
             else
             {
-               return "ingrese un dia como la gente";
+               return "ingrese un dia correctamente";
             }
         }
     
