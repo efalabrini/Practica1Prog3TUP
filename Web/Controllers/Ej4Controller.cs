@@ -22,8 +22,7 @@ namespace Web.Controllers
             }
             else
             {   
-                resultado = "Los números son iguales";
-
+                resultado = "Los números son iguales!";
             }
 
             return resultado;
