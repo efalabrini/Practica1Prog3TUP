@@ -22,7 +22,7 @@ namespace Web.Controllers
             }
             else
             {
-                return $"Ambos numeros son iguales";
+                return $"Los numeros son iguales";
             }
         }
     }
