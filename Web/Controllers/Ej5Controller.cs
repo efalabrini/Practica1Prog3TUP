@@ -9,7 +9,7 @@ namespace Web.Controllers
 
     public class Ej5Controller : ControllerBase
     {
-        [HttpGet()]
+        
         public string Get([FromQuery] string day)
         {
             string[] daysWeek = ["lunes", "martes", "miercoles", "jueves", "viernes"];
