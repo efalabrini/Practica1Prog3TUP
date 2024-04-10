@@ -10,8 +10,12 @@ namespace Web.Controllers
         [HttpGet()]
         public List<int> Get([FromQuery] List<int> numbers)
         {
-            var numquery = numbers.OrderByDescending(x => x).ToList();
-            return numquery.GetRange(0, 5);
+            var numquery =
+                (from num in numbers
+                 orderby num descending
+                 select num).Take(5);
+
+            return numquery.ToList();
         }
     }
 }
