@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers
 {
@@ -10,24 +9,31 @@ namespace Web.Controllers
     public class Ej5Controller : ControllerBase
     {
         [HttpGet()]
-        public string Get([FromQuery] string day)
+        public string Get([FromQuery] string dia)
         {
-            string[] daysWeek = ["lunes", "martes", "miercoles", "jueves", "viernes"];
-            string[] daysWeekend = ["sabado", "domingo"];
 
-            day = day.ToLower().Trim();
+            
+            dia = dia.Trim();
 
-            if (daysWeek.Contains(day))
+            
+            dia = dia.ToLower();
+
+            
+            if (dia.Equals("sábado") || dia.Equals("sabado") || dia.Equals("domingo"))
             {
-                return "Ese dia NO pertenece al fin de semana";
+                return ("es fin de semana");
             }
-            else if (daysWeekend.Contains(day))
-            {             
-                return "Ese dia pertenece al fin de samana";
+            
+            else if (dia.Equals("lunes") || dia.Equals("martes") || dia.Equals("miércoles") || dia.Equals("miercoles") || dia.Equals("jueves") || dia.Equals("viernes"))
+            {
+                return ("NO es fin de semana");
             }
-
-            return "ERROR: El dia ingresado no coincide con ningun dia existente";
+            else
+            {
+                return ("el nombre del día ingresado no es valido");
+            }
         }
     }
 }
+    
 
