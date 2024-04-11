@@ -9,31 +9,31 @@ namespace Web.Controllers
     {
         [HttpGet()]
         public string Get([FromQuery] int numero1, [FromQuery] int numero2)
-        { 
+        {
 
             string respuesta;
-        
-        
-            if (numero1 > numero2)         
-           
-              {
+
+
+            if (numero1 > numero2)
+
+            {
                 respuesta = $"El primer numero ingresado : {numero1} es el mayor";
-           
-               }           
-          
-             else if (numero2 > numero1)
 
-                {
+            }
+
+            else if (numero2 > numero1)
+
+            {
                 respuesta = $"El segundo numero ingresado : {numero2} es el mayor";
-               
-                }
+
+            }
 
 
-             else
-                {
+            else
+            {
                 respuesta = "Ambos numeros son iguales";
-                  }
-         
+            }
+
             return respuesta;
         }
     }
