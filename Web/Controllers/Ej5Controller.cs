@@ -5,8 +5,6 @@ namespace Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
-
     public class Ej5Controller : ControllerBase
     {
         [HttpGet()]
@@ -14,20 +12,27 @@ namespace Web.Controllers
         {
             string[] daysWeek = ["lunes", "martes", "miercoles", "jueves", "viernes"];
             string[] daysWeekend = ["sabado", "domingo"];
-
             day = day.ToLower().Trim();
-
-            if (daysWeek.Contains(day))
+            if (daysWeek.Contains(day)) 
             {
-                return "Ese dia NO pertenece al fin de semana";
+                return $" {day} es un dia de semana ";
             }
-            else if (daysWeekend.Contains(day))
-            {             
-                return "Ese dia pertenece al fin de samana";
+            else if (daysWeekend.Contains(day)) 
+            {
+                return $" {day} es un dia del fin de semana";
             }
-
-            return "ERROR: El dia ingresado no coincide con ningun dia existente";
+            else
+            {
+                return "Error, el dato ingresado es invalido";       
+            }
         }
+
+
+        
+            
+           
+
+
+
     }
 }
-
