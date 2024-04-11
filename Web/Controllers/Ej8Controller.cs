@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Web.Controllers
 {
@@ -8,16 +9,16 @@ namespace Web.Controllers
     public class Ej8Controller : ControllerBase
     {
         [HttpGet()]
-        public int Get()
+        public List<int> Get()
         {
-            int cont = 1;
-
-            while (cont < 100)
+            List<int> num = [];
+            int i = 0;
+            while ( i <= 100)
             {
-                cont++;
+                num.Add(i);
+                i++;
             }
-
-            return cont; // que retorne el ultimo numero para verificar que llego bien al contado
+            return num;
         }
     }
 }
