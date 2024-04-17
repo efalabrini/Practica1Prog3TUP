@@ -9,29 +9,29 @@ namespace Web.Controllers
     public class Ej6Controller : ControllerBase
     {
         [HttpGet()]
-        public string Get([FromQuery] double inputPrice, [FromQuery] string paymentMethod , [FromQuery] string cardNumber = null)
+        public string Get([FromQuery] double precio, [FromQuery] string formaDePago, [FromQuery] string numTarj)
         {
             string response;
 
-            if (inputPrice <= 0)
+            if (precio <= 0)
             {
-                return "Costo no puede ser menor o igual a 0";
+                return "Costo no puede ser negativo";
             }
 
-            if (paymentMethod.Equals("tarjeta", StringComparison.OrdinalIgnoreCase)) 
-            {   
-                if (cardNumber == null || cardNumber.Length != 16)
+            if (formaDePago.Equals("tarjeta", StringComparison.OrdinalIgnoreCase))
+            {
+                if (numTarj.Length != 16)
                 {
                     return "El numero de tarjeta tiene que tener 16 digitos";
                 }
 
-                double total = inputPrice * 1.10;
+                double total = precio * 1.10;
                 response = $"El valor a pagar con tarjeta es: {total}";
-                return response ;
+                return response;
             }
-            else if(paymentMethod.Equals("efectivo", StringComparison.OrdinalIgnoreCase))
+            else if (formaDePago.Equals("efectivo", StringComparison.OrdinalIgnoreCase))
             {
-                response = $"El valor a pagar con efectivo es: {inputPrice}";
+                response = $"El valor a pagar con efectivo es: {precio}";
                 return response;
             }
             else
