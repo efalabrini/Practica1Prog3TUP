@@ -10,7 +10,7 @@ namespace Web.Controllers
         [HttpGet()]
         public string Get([FromQuery] string nombre, [FromQuery] string edad)
         {
-            string result = $"Te llamas {nombre} y tenes {edad} años.";
+            string result = $"Te llamas {nombre} y tenes {edad} anios.";
             return result;
         }
     }
