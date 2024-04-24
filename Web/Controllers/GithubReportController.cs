@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using Web.Entities.GithubReport;
 
+
 namespace Web.Controllers
 {
     [Route("api/[controller]")]
@@ -84,7 +85,15 @@ namespace Web.Controllers
             //To do
             //Write a LINQ query in Query syntax to return
             //PR in state "open" or merged, and filter by PR.title cointaining {titleContains} (IgnoreCase).
-            var queryToGroupByUser = "";
+
+            var queryToGroupByUser = from Pr in listPR
+                                     where (Pr.state.ToLower() == "open" ||
+                                     (Pr.merged_at != null && Pr.merged_at.ToLower().Contains("merged")) &&
+                                     Pr.title.ToLower().Contains(titleContains))
+                                     select Pr.user;
+
+
+
 
             var listGroupedByUser = (queryToGroupByUser).ToList();
 
@@ -92,7 +101,15 @@ namespace Web.Controllers
             //Write a LINQ query in Query syntax to return from listGroupedByUser:
             //user.login count(pr)
             //order by count(pr) descending
-            var reportQuery = "";
+            var reportQuery = from Pr in listPR
+                              where (Pr.state.ToLower() == "open" ||
+                              (Pr.merged_at != null && Pr.merged_at.ToLower().Contains("merged")) &&
+                              Pr.title.ToLower().Contains(titleContains))
+                              select Pr.user;
+
+
+
+
 
             //Output example
             //[
@@ -108,3 +125,4 @@ namespace Web.Controllers
         }
     }
 }
+
