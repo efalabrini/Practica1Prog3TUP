@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using Web.Entities.GithubReport;
 
 namespace Web.Controllers
@@ -90,7 +91,7 @@ namespace Web.Controllers
                     (pr.state == "open" || pr.state == "merged") 
                     && 
                     pr.title.Contains(titleContains)
-                select pr;
+                select pr.user;
 
             var listGroupedByUser = (queryToGroupByUser).ToList();
 
@@ -99,7 +100,10 @@ namespace Web.Controllers
             //user.login count(pr)
             //order by count(pr) descending
 
-            
+            var reportQuery =
+                from user in listGroupedByUser
+                group user by user.login into newGroup
+                select $"{newGroup.Key} - {newGroup.Count()}";
 
             //Output example
             //[
