@@ -84,15 +84,22 @@ namespace Web.Controllers
             //To do
             //Write a LINQ query in Query syntax to return
             //PR in state "open" or merged, and filter by PR.title cointaining {titleContains} (IgnoreCase).
-            var queryToGroupByUser = "";
+            var queryToGroupByUser =
+                from pr in listPR
+                where (pr.state == "open" || pr.merged_at != "") && pr.title.Contains(titleContains)
+                select pr.user;
 
-            var listGroupedByUser = (queryToGroupByUser).ToList();
+            var listGroupedByUser = queryToGroupByUser.ToList();
 
             //To do
             //Write a LINQ query in Query syntax to return from listGroupedByUser:
             //user.login count(pr)
             //order by count(pr) descending
-            var reportQuery = "";
+            var reportQuery =
+                from user in listGroupedByUser
+                group user.login by user.login into newGroup
+                orderby newGroup.Count() descending
+                select $"{newGroup.Key} {newGroup.Count()}";
 
             //Output example
             //[
