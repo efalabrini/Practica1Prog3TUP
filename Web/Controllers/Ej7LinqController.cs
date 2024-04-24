@@ -19,8 +19,14 @@ namespace Web.Controllers
 
         public static IList<string> DevolverPalabrasCapitales(string cadena)
         {
-            var listWords = cadena.Split().ToList();
-            return listWords.Where(word => word == word.ToUpper()).ToList();
+            var listWords = cadena.Split();
+            
+            return listWords
+                .Where
+                (
+                    word => word == word.ToUpper()
+                )
+                .ToList();
         }
     }
 }
