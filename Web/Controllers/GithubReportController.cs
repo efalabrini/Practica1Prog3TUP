@@ -103,6 +103,7 @@ namespace Web.Controllers
             var reportQuery =
                 from user in listGroupedByUser
                 group user by user.login into newGroup
+                orderby newGroup.Count() descending
                 select $"{newGroup.Key} - {newGroup.Count()}";
 
             //Output example
