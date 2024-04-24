@@ -12,7 +12,17 @@ namespace Web.Controllers
         [HttpGet()]
         public List<string> Get([FromQuery] List<int> list)
         {
-            var result = list.Where(number => (number * number) > 20).Select(number => $"{number} - {number*number}").ToList();
+            var result = list
+                .Where
+                (
+                    number => (number * number) > 20
+                )
+                .Select
+                (
+                    number => $"{number} - {number*number}"
+                )
+                .ToList();
+            
             return result;
         }
     }
