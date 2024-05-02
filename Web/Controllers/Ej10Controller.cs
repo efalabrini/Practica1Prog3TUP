@@ -1,39 +1,41 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.Eventing.Reader;
+using System.Reflection;
 
 namespace Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
-
     public class Ej10Controller : ControllerBase
     {
         [HttpGet()]
         public string Get()
         {
-            List<int> pairNumbers = [];
-            List<int> divisibleBy3 = [];
+            List<int> div2 = [];
+            List<int> div3 = [];
 
-            for (int i = 1; i <= 100; i++)
+            for (int i = 0; i <= 100; i++)
             {
                 if (i % 2 == 0)
                 {
-                    pairNumbers.Add(i);
-                    
-                    if (i % 3 == 0) // si es par y divisible por 3
+                    if (i % 3 == 0)
                     {
-                        divisibleBy3.Add(i);
+                        div2.Add(i);
+                        div3.Add(i);
+                    }
+                    else
+                    {
+                        div2.Add(i);
+
                     }
                 }
                 else if (i % 3 == 0)
                 {
-                    divisibleBy3.Add(i);
-                }
+                    div3.Add(i);
+                }  
             }
-
-
-            return $"Los numeros pares: {string.Join(", ", pairNumbers)}\nLos divisibles por 3: {string.Join(", ", divisibleBy3)}";
+            return $"Numeros pares: {string.Join(", ", div2)}\nNumeros divisibles por 3: {string.Join(", ", div3)}";
         }
     }
 }
