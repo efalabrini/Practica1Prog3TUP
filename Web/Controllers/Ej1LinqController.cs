@@ -10,10 +10,10 @@ namespace Web.Controllers
     public class Ej1LinqController : ControllerBase
     {
         [HttpGet()]
-        public List<int> Get([FromQuery] List<int> oneList)
+        public List<int> Get([FromQuery] List<int> list)
         {
-            var filteredList = oneList.Where(x => x > 30 && x < 100).ToList();
-            return filteredList;
+            var list2 = list.Where(x => x > 30 && x < 100).ToList();
+            return list2;
             
 
         }
